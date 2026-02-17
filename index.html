@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday - Ammar</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f0f7ff;
+        font-family: "Tahoma", sans-serif;
+        text-align: center;
+    }
+
+    .center {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .btn {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 18px 40px;
+        border-radius: 40px;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+    }
+
+    .heart {
+        position: fixed;
+        color: #3b82f6;
+        font-size: 22px;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    @keyframes floatUp {
+        0%   { transform: translateY(0); opacity: 0.7; }
+        100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    h1 {
+        color: #1e40af;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    p {
+        color: #3b82f6;
+        font-size: 20px;
+    }
+
+    /* موبايل */
+    @media(max-width:600px){
+        h1 { font-size: 32px; }
+        p { font-size: 18px; }
+        .btn { font-size: 20px; padding: 16px 32px; }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- صفحة البداية -->
+<div id="startPage" class="center">
+    <h1>🎉 عيد ميلاد عمار 🎉</h1>
+    <p>اضغط للدخول إلى عالم بثكوتتك 💙</p>
+    <button class="btn" onclick="enterSite()">ادخل عالم البثكوتة 🎁</button>
+</div>
+
+<!-- الصفحة الرئيسية -->
+<div id="mainPage" class="center" style="display:none;">
+    <div style="font-size:80px;">🍪</div>
+    <h1>عمار البثكوتة</h1>
+    <p>كل عام وأنت لقلبي ❤️</p>
+</div>
+
+<!-- تشغيل أغنية يوتيوب بالخفيّة -->
+<iframe id="musicPlayer"
+        src=""
+        allow="autoplay"
+        style="display:none;"></iframe>
+
+<script>
+/* -------------------------
+   تشغيل القلوب المتطايرة
+--------------------------*/
+setInterval(() => {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (15 + Math.random() * 25) + "px";
+    h.style.animationDuration = (4 + Math.random() * 4) + "s";
+    h.innerHTML = "💙";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+}, 500);
+
+
+/* -------------------------
+    تشغيل الموقع + الموسيقى
+--------------------------*/
+function enterSite() {
+
+    // إخفاء صفحة البداية
+    document.getElementById("startPage").style.display = "none";
+
+    // إظهار الصفحة الرئيسية
+    document.getElementById("mainPage").style.display = "flex";
+
+    // تشغيل يوتيوب بالخفيّة
+    const videoURL = 
+      "https://youtu.be/2wZ9OrZyvPo?si=wB9xLcc1cbxUpsUU";
+
+    document.getElementById("musicPlayer").src = videoURL;
+}
+</script>
+
+</body>
+</html>
+
